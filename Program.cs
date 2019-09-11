@@ -10,6 +10,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            string name = "Loratadin Legacy";
+            int age = 35;
+            Console.WriteLine("{0} is {1}", name, age);
         }
     }
 }
