@@ -23,7 +23,9 @@ namespace ConsoleApp
             Console.WriteLine("What is your name?");
             string inputName = Console.ReadLine();
             Console.WriteLine("Hello {0}, let's play a game", inputName);
-            int correctNumber = 7;
+            //int correctNumber = 7;
+            Random random = new Random();
+            int correctNumber = random.Next(1, 10);
             int guess = 0;
             Console.WriteLine("Guess a number between 1 and 10");
             while (guess != correctNumber)
