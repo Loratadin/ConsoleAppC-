@@ -29,6 +29,12 @@ namespace ConsoleApp
             while (guess != correctNumber)
             {
                 string input = Console.ReadLine();
+                if(!int.TryParse(input, out guess)) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Please, enter an actual number");
+                    Console.ResetColor();
+                    continue;
+                }
                 guess = Int32.Parse(input);
                 if (guess != correctNumber)
                 {
