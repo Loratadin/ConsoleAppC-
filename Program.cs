@@ -10,19 +10,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            string appName = "WebLorat";
-            string appVersion = "1.0.0";
-            string appAuthor = "Loratadin Legacy";
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
-            string name = "Loratadin Legacy";
-            int age = 35;
-            Console.ResetColor();
-            Console.WriteLine("{0} is {1}", name, age);
-            Console.WriteLine("What is your name?");
-            string inputName = Console.ReadLine();
-            Console.WriteLine("Hello {0}, let's play a game", inputName);
+            GetAppInfo();
+            GreetUser();
             while (true) { 
                 Random random = new Random();
                 int correctNumber = random.Next(1, 10);
@@ -32,22 +21,16 @@ namespace ConsoleApp
                 {
                     string input = Console.ReadLine();
                     if(!int.TryParse(input, out guess)) {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Please, enter an actual number");
-                        Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Red, "Please, enter an actual number");
                         continue;
                     }
                     guess = Int32.Parse(input);
                     if (guess != correctNumber)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Wrong number, please try again");
-                        Console.ResetColor();
+                        PrintColorMessage(ConsoleColor.Red, "Wrong number, please try again");
                     }
                 }
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("You are CORRECT!!!");
-                Console.ResetColor();
+                PrintColorMessage(ConsoleColor.Yellow, "You are CORRECT!!!");
                 Console.WriteLine("Play again? [Y or N]");
                 string answer = Console.ReadLine().ToUpper();
                 if (answer == "Y") {
@@ -58,6 +41,25 @@ namespace ConsoleApp
                     return;
                 }
             }
+        }
+        static void GetAppInfo() {
+            string appName = "WebLorat";
+            string appVersion = "1.0.0";
+            string appAuthor = "Loratadin Legacy";
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+            Console.ResetColor();
+        }
+        static void GreetUser() {
+            Console.WriteLine("What is your name?");
+            string inputName = Console.ReadLine();
+            Console.WriteLine("Hello {0}, let's play a game", inputName);
+        }
+        static void PrintColorMessage(ConsoleColor color, string message) {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
     }
 }
